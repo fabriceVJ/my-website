@@ -1,0 +1,40 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1c20; /* Dark background */
+    font-family: "0xProto", monospace;
+    color: #d0d2d6; /* Slightly off-white for readability */
+    text-align: center;
+}
+
+.container {
+    padding: 2rem 3rem;
+    background: #2a2d33; /* Dark card background */
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.name {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #6b717e; /* Main accent color */
+    text-shadow:
+        0 0 5px #6b717e55,
+        0 0 15px #6b717e33; /* subtle glow effect */
+}
+
+.info {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #9aa0a8; /* lighter gray for secondary text */
+}
