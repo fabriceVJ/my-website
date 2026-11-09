@@ -2,16 +2,259 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fabrice von Jüchen</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Fabrice von Jüchen · Software Engineer</title>
+        <!-- TODO: adjust the description to match your intro -->
+        <meta
+            name="description"
+            content="Fabrice von Jüchen, software engineer. Skills, projects, experience and education."
+        />
+        <link rel="canonical" href="https://fabrice-vj.ch/" />
+
+        <!-- Link previews (LinkedIn, Slack, WhatsApp, Teams, …). Keep og:description in sync with the description above. -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="fabrice-vj.ch" />
+        <meta property="og:url" content="https://fabrice-vj.ch/" />
+        <meta property="og:title" content="Fabrice von Jüchen · Software Engineer" />
+        <meta
+            property="og:description"
+            content="Fabrice von Jüchen, software engineer. Skills, projects, experience and education."
+        />
+        <meta property="og:image" content="https://fabrice-vj.ch/media/icons/icon-512.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="FvJ logo" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary" />
+
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#1a1c20" />
+        <link rel="icon" href="media/icons/favicon.ico" sizes="32x32" />
+        <link rel="icon" type="image/svg+xml" href="media/icons/favicon.svg" />
+        <link rel="apple-touch-icon" href="media/icons/apple-touch-icon.png" />
+        <link rel="preload" href="media/fonts/0xProto-Regular.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="stylesheet" href="style.css" />
-        <link href="https://fonts.cdnfonts.com/css/0xproto" rel="stylesheet" />
-        <link rel="icon" type="image/svg+xml" href="/media/fvj.svg" />
     </head>
     <body>
-        <div class="container">
-            <h1 class="name">Fabrice von Jüchen</h1>
-            <p class="info">🚧 This site is under construction 🚧</p>
-        </div>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="site-header">
+            <div class="wrap">
+                <a class="brand" href="#top" aria-label="Back to top">
+                    <img src="media/icons/favicon.svg" alt="" width="32" height="32" />
+                </a>
+                <nav class="nav" aria-label="Sections">
+                    <ul>
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#skills">skills</a></li>
+                        <li><a href="#projects">projects</a></li>
+                        <li><a href="#cv">cv</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main" class="wrap">
+            <!-- ================= HERO ================= -->
+            <section id="top" class="hero" aria-labelledby="name">
+                <h1 id="name">Fabrice von Jüchen</h1>
+                <!-- TODO: your role / title -->
+                <p class="role">Software Engineer</p>
+                <!-- TODO: one or two sentences about you -->
+                <p class="intro">
+                   Hi! My name is Fabrice von Jüchen. I am a pasionate software engineer located in switzerland. 
+                </p>
+
+                <!--
+                    PROFILE LINKS: one line per link. Copy a line to add one, e.g.:
+                    <li><a href="https://gitlab.com/USERNAME" target="_blank" rel="noopener noreferrer">GitLab</a></li>
+                    <li><a href="mailto:you@example.com">E-Mail</a></li>
+                -->
+                <ul class="links" aria-label="Profiles">
+                    <li><a href="https://github.com/fabriceVJ" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <!-- TODO: your LinkedIn profile URL -->
+                    <li><a href="https://www.linkedin.com/in/TODO" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </section>
+
+            <!-- ================= ABOUT ================= -->
+            <section id="about" aria-labelledby="about-title">
+                <h2 id="about-title">about</h2>
+                <p>
+                    Hi, my name is Fabrice von Jüchen. I am a pasionate developer located in switzerland.
+                </p>
+		<!-- <p>TODO: Optional second paragraph, e.g. what you're currently learning or looking for.</p> -->
+            </section>
+
+            <!-- ================= SKILLS ================= -->
+            <section id="skills" aria-labelledby="skills-title">
+                <h2 id="skills-title">skills</h2>
+                <!--
+                    SKILL GROUP template: copy the whole <div> to add a group, or add <li> items to an existing one.
+                    <div>
+                        <dt>Category</dt>
+                        <dd><ul class="tags"><li>Skill</li><li>Skill</li></ul></dd>
+                    </div>
+                -->
+                <dl class="skills">
+                    <div>
+                        <dt>Backend</dt>
+                        <dd>
+                            <ul class="tags">
+                                <li>Java</li>
+                                <li>Spring Boot</li>
+                                <li>C#</li>
+                                <li>.NET</li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Frontend</dt>
+                        <dd>
+                            <ul class="tags">
+                                <li>Angular</li>
+                                <li>TypeScript</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>
+                            <!-- TODO: your tools -->
+                            <ul class="tags">
+                                <li>Git</li>
+                                <li>Docker</li>
+                                <li>TODO</li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </section>
+
+            <!-- ================= PROJECTS ================= -->
+            <section id="projects" aria-labelledby="projects-title">
+                <h2 id="projects-title">projects</h2>
+                <!--
+                    PROJECT template: copy the whole <li> to add a project. The project-links <p> is optional:
+                    delete it if there is nothing public to link to.
+                    <li>
+                        <article class="card">
+                            <h3>Project name</h3>
+                            <p>One or two sentences: what it is and what you did.</p>
+                            <ul class="tags" aria-label="Technologies"><li>Java</li><li>Spring Boot</li></ul>
+                            <p class="project-links">
+                                <a href="https://github.com/..." target="_blank" rel="noopener noreferrer">source</a>
+                                <a href="https://..." target="_blank" rel="noopener noreferrer">live</a>
+                            </p>
+                        </article>
+                    </li>
+                -->
+                <ul class="cards">
+                    <!-- <li>
+                        <article class="card">
+                            <h3>TODO: Project one</h3>
+                            <p>TODO: What it is and what you did, in one or two sentences.</p>
+                            <ul class="tags" aria-label="Technologies">
+                                <li>Java</li>
+                                <li>Spring Boot</li>
+                            </ul>
+                            <p class="project-links">
+                                <a href="https://github.com/fabriceVJ" target="_blank" rel="noopener noreferrer">source</a>
+                                <a href="https://fabrice-vj.ch" target="_blank" rel="noopener noreferrer">live</a>
+                            </p>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="card">
+                            <h3>TODO: Project two</h3>
+                            <p>TODO: What it is and what you did, in one or two sentences.</p>
+                            <ul class="tags" aria-label="Technologies">
+                                <li>Angular</li>
+                                <li>C#</li>
+                                <li>.NET</li>
+                            </ul>
+                            <p class="project-links">
+                                <a href="https://github.com/fabriceVJ" target="_blank" rel="noopener noreferrer">source</a>
+                            </p>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="card">
+                            <h3>TODO: Project three</h3>
+                            <p>TODO: A project without public links. The links row is simply left out.</p>
+                            <ul class="tags" aria-label="Technologies">
+                                <li>TypeScript</li>
+                            </ul>
+                        </article>
+		    </li> -->
+                </ul>
+            </section>
+
+            <!-- ================= CV: EXPERIENCE + EDUCATION ================= -->
+            <section id="cv" aria-labelledby="cv-title">
+                <h2 id="cv-title">cv</h2>
+                <!--
+                    ENTRY template: newest first. Copy the whole <li>. Use "present" for ongoing entries.
+                    The desc <p> is optional.
+                    <li class="entry">
+                        <p class="period"><time datetime="2022-08">2022</time> – present</p>
+                        <div>
+                            <h4>Title</h4>
+                            <p class="org">Company / School</p>
+                            <p class="desc">Optional short description.</p>
+                        </div>
+                    </li>
+                -->
+                <div class="cv-group">
+                    <h3>Experience</h3>
+                    <ol class="timeline">
+                        <!-- <li class="entry">
+                            <p class="period"><time datetime="2023">2023</time> – present</p>
+                            <div>
+                                <h4>TODO: Job title</h4>
+                                <p class="org">TODO: Company</p>
+                                <p class="desc">TODO: Optional one-line description of what you do there.</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <p class="period"><time datetime="2020">2020</time> – <time datetime="2023">2023</time></p>
+                            <div>
+                                <h4>TODO: Previous job title</h4>
+                                <p class="org">TODO: Company</p>
+                            </div>
+			</li>-->
+                    </ol>
+                </div>
+
+                <div class="cv-group">
+                    <h3>Education</h3>
+                    <ol class="timeline">
+                        <!-- <li class="entry">
+                            <p class="period"><time datetime="2019">2019</time> – <time datetime="2023">2023</time></p>
+                            <div>
+                                <h4>TODO: Degree</h4>
+                                <p class="org">TODO: School / University</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <p class="period"><time datetime="2015">2015</time> – <time datetime="2019">2019</time></p>
+                            <div>
+                                <h4>TODO: Apprenticeship / Diploma</h4>
+                                <p class="org">TODO: School</p>
+                            </div>
+			</li> -->
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrap">
+                <p><span class="nowrap">© 2026 Fabrice von Jüchen</span> · <span class="nowrap">fabrice-vj.ch</span></p>
+            </div>
+        </footer>
     </body>
 </html>

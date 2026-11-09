@@ -1,40 +1,440 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
+/* ==========================================================================
+   fabrice-vj.ch — one-page portfolio
+   Mobile-first. One breakpoint (40rem). Dark only. No JavaScript.
+   To change the look, edit the tokens in :root — nothing else should need it.
+   ========================================================================== */
+
+/* ---------- Font (self-hosted, SIL OFL 1.1 — see media/fonts/OFL.txt) ---------- */
+@font-face {
+    font-family: "0xProto";
+    src: url("media/fonts/0xProto-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "0xProto";
+    src: url("media/fonts/0xProto-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Design tokens ---------- */
+:root {
+    color-scheme: dark;
+
+    /* Colours — all text colours ≥ 4.5:1 on --bg and --surface (WCAG AA) */
+    --bg: #1a1c20;
+    --surface: #2a2d33;
+    --text: #d0d2d6;      /* 11.3:1 on bg, 9.1:1 on surface */
+    --heading: #e6e7ea;   /* 13.8:1 on bg */
+    --muted: #9aa0a8;     /* 6.5:1 on bg, 5.2:1 on surface */
+    --accent: #7fb4ca;    /* 7.5:1 on bg, 6.1:1 on surface */
+    --border: #3a3e46;    /* decorative only */
+    --rule: #6b717e;      /* decorative only — not for text */
+
+    /* Typography */
+    --font: "0xProto", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --fs-small: 0.875rem;
+    --fs-base: 1rem;
+    --fs-h3: 1.05rem;
+    --fs-h2: clamp(1.25rem, 1rem + 1.2vw, 1.5rem);
+    --fs-h1: clamp(2rem, 1.2rem + 4.5vw, 3.25rem);
+    --lh: 1.65;
+
+    /* Spacing & layout */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2.5rem;
+    --space-6: clamp(3rem, 2rem + 5vw, 5rem);
+    --gutter: clamp(1rem, 5vw, 3rem);
+    --page-width: 56rem;
+    --measure: 65ch;
+    --label-width: 9rem;
+    --radius: 8px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+* {
+    margin: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1c20; /* Dark background */
-    font-family: "0xProto", monospace;
-    color: #d0d2d6; /* Slightly off-white for readability */
-    text-align: center;
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--fs-base);
+    line-height: var(--lh);
+    -webkit-font-smoothing: antialiased;
 }
 
-.container {
-    padding: 2rem 3rem;
-    background: #2a2d33; /* Dark card background */
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+ul,
+ol {
+    padding: 0;
+    list-style: none;
 }
 
-.name {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #6b717e; /* Main accent color */
-    text-shadow:
-        0 0 5px #6b717e55,
-        0 0 15px #6b717e33; /* subtle glow effect */
+img,
+svg {
+    display: block;
+    max-width: 100%;
 }
 
-.info {
-    font-size: 1.2rem;
+/* ---------- Base typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--heading);
+    line-height: 1.25;
     font-weight: 700;
-    letter-spacing: 1px;
-    color: #9aa0a8; /* lighter gray for secondary text */
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    margin-bottom: var(--space-4);
+}
+
+/* "# about" — the hash is decoration, hidden from assistive technology */
+h2::before {
+    content: "# ";
+    content: "# " / "";
+    color: var(--accent);
+}
+
+h3,
+h4 {
+    font-size: var(--fs-h3);
+}
+
+p {
+    max-width: var(--measure);
+}
+
+p + p {
+    margin-top: var(--space-3);
+}
+
+/* ---------- Links & focus ---------- */
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+/* External links get a small arrow marker (not read aloud) */
+a[target="_blank"]::after {
+    content: "\2009↗";
+    content: "\2009↗" / "";
+    font-size: 0.85em;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Inline lists of links (hero links, nav, project links): no underline until hover */
+.links a,
+.nav a,
+.project-links a,
+.brand {
+    text-decoration: none;
+}
+
+.links a:hover,
+.nav a:hover,
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+.skip-link {
+    position: absolute;
+    left: var(--space-3);
+    top: -100%;
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius);
+    z-index: 10;
+}
+
+.skip-link:focus {
+    top: var(--space-3);
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+    width: 100%;
+    max-width: calc(var(--page-width) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Header / nav ---------- */
+.site-header {
+    border-bottom: 1px solid var(--border);
+    background-color: var(--bg);
+}
+
+.site-header .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-3);
+}
+
+.brand {
+    display: inline-flex;
+    border-radius: var(--radius);
+}
+
+.brand img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+}
+
+.nav a {
+    color: var(--muted);
+}
+
+.nav a:hover {
+    color: var(--accent);
+}
+
+/* ---------- Sections ---------- */
+main > section {
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--border);
+}
+
+main > section:first-child {
+    border-top: 0;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    padding-block: var(--space-6);
+}
+
+.hero .role {
+    margin-top: var(--space-2);
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.hero .intro {
+    margin-top: var(--space-4);
+}
+
+.hero .links {
+    margin-top: var(--space-5);
+}
+
+/* Profile links — add more <li> entries, they wrap automatically */
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+}
+
+.links a {
+    display: inline-block;
+    padding-block: var(--space-1);
+}
+
+/* ---------- Tags (skills, project tech) ---------- */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.tags li {
+    padding: 0.1rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: var(--fs-small);
+    color: var(--text);
+    white-space: nowrap;
+}
+
+/* ---------- Skills ---------- */
+.skills {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.skills dt {
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+}
+
+.skills dd {
+    margin: 0;
+}
+
+/* ---------- Projects ---------- */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    gap: var(--space-4);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    height: 100%;
+    padding: var(--space-4);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.card p {
+    font-size: 0.95rem;
+}
+
+.card .tags li {
+    border-color: var(--rule);
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    margin-top: auto;
+    font-size: var(--fs-small);
+}
+
+/* ---------- CV timeline ---------- */
+.cv-group + .cv-group {
+    margin-top: var(--space-5);
+}
+
+.cv-group > h3 {
+    color: var(--muted);
+    font-weight: 400;
+    text-transform: lowercase;
+    margin-bottom: var(--space-4);
+}
+
+.timeline {
+    display: grid;
+    gap: var(--space-4);
+    border-left: 1px solid var(--border);
+    padding-left: var(--space-4);
+}
+
+.entry .period {
+    color: var(--muted);
+    font-size: var(--fs-small);
+}
+
+.entry .org {
+    color: var(--muted);
+}
+
+.entry .desc {
+    margin-top: var(--space-2);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: var(--space-5);
+    color: var(--muted);
+    font-size: var(--fs-small);
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* ---------- Motion (only when the visitor allows it) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    a,
+    .nav a {
+        transition: color 150ms ease, text-decoration-thickness 150ms ease;
+    }
+}
+
+/* ---------- Wider screens: the single breakpoint ---------- */
+@media (min-width: 40rem) {
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
+
+    /* keep section headings clear of the sticky header when jumping */
+    main > section {
+        scroll-margin-top: 4rem;
+    }
+
+    .skills > div {
+        display: grid;
+        grid-template-columns: var(--label-width) 1fr;
+        gap: var(--space-4);
+        align-items: baseline;
+    }
+
+    .skills dt {
+        margin-bottom: 0;
+    }
+
+    .timeline {
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .entry {
+        display: grid;
+        grid-template-columns: var(--label-width) 1fr;
+        gap: var(--space-4);
+    }
+
+    .entry .period {
+        padding-top: 0.1rem;
+    }
 }
